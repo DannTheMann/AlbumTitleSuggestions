@@ -1,15 +1,15 @@
 {
-  "main.css": "/my-app/static/css/main.10501430.chunk.css",
-  "main.js": "/my-app/static/js/main.bf33ea16.chunk.js",
-  "main.js.map": "/my-app/static/js/main.bf33ea16.chunk.js.map",
-  "runtime~main.js": "/my-app/static/js/runtime~main.eebd60f5.js",
-  "runtime~main.js.map": "/my-app/static/js/runtime~main.eebd60f5.js.map",
-  "static/js/2.a962c0fb.chunk.js": "/my-app/static/js/2.a962c0fb.chunk.js",
-  "static/js/2.a962c0fb.chunk.js.map": "/my-app/static/js/2.a962c0fb.chunk.js.map",
-  "static/js/3.5526bd81.chunk.js": "/my-app/static/js/3.5526bd81.chunk.js",
-  "static/js/3.5526bd81.chunk.js.map": "/my-app/static/js/3.5526bd81.chunk.js.map",
-  "index.html": "/my-app/index.html",
-  "precache-manifest.85a808044dc770bfe92b57336ff5d787.js": "/my-app/precache-manifest.85a808044dc770bfe92b57336ff5d787.js",
-  "service-worker.js": "/my-app/service-worker.js",
-  "static/css/main.10501430.chunk.css.map": "/my-app/static/css/main.10501430.chunk.css.map"
+  "main.css": "/AlbumTitleSuggestions/static/css/main.10501430.chunk.css",
+  "main.js": "/AlbumTitleSuggestions/static/js/main.bf33ea16.chunk.js",
+  "main.js.map": "/AlbumTitleSuggestions/static/js/main.bf33ea16.chunk.js.map",
+  "runtime~main.js": "/AlbumTitleSuggestions/static/js/runtime~main.db6ea4af.js",
+  "runtime~main.js.map": "/AlbumTitleSuggestions/static/js/runtime~main.db6ea4af.js.map",
+  "static/js/2.a962c0fb.chunk.js": "/AlbumTitleSuggestions/static/js/2.a962c0fb.chunk.js",
+  "static/js/2.a962c0fb.chunk.js.map": "/AlbumTitleSuggestions/static/js/2.a962c0fb.chunk.js.map",
+  "static/js/3.5526bd81.chunk.js": "/AlbumTitleSuggestions/static/js/3.5526bd81.chunk.js",
+  "static/js/3.5526bd81.chunk.js.map": "/AlbumTitleSuggestions/static/js/3.5526bd81.chunk.js.map",
+  "index.html": "/AlbumTitleSuggestions/index.html",
+  "precache-manifest.ef5633b257c088533e7f78302377d3bb.js": "/AlbumTitleSuggestions/precache-manifest.ef5633b257c088533e7f78302377d3bb.js",
+  "service-worker.js": "/AlbumTitleSuggestions/service-worker.js",
+  "static/css/main.10501430.chunk.css.map": "/AlbumTitleSuggestions/static/css/main.10501430.chunk.css.map"
 }
