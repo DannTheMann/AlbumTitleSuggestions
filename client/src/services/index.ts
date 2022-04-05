@@ -1,6 +1,6 @@
 import { Coordinates } from "../models/Utils";
 
-const WEATHER_API_KEY = "4ecb3809c6684284899145248220504";
+const WEATHER_API_KEY = "6680ff9e560641eca5f191603220504";
 const HERE_DOT_COM_API_KEY = "Znc7h30xPVDLqOCjKagiaN7z8seznJDP7_ZTOK3-V6M";
 
 const getLocationDateForPhoto = async (coordinates: Coordinates): Promise<any> => {
@@ -18,14 +18,14 @@ const getLocationDateForPhoto = async (coordinates: Coordinates): Promise<any> =
     }
 }
 
-const getAverageTemperatureOnDate = async (date: string, coordinates: Coordinates): Promise<number> => {
+const getWeatherOnDate = async (date: string, coordinates: Coordinates): Promise<any> => {
     
     const geoTemperature = await fetch(`http://api.worldweatheronline.com/premium/v1/past-weather.ashx?q=${coordinates.latitude}%2C${coordinates.longitude}4&key=${WEATHER_API_KEY}&date=2020-03-30&format=json`);
         
     if(geoTemperature.ok)
     {
         const json = await geoTemperature.json();
-        return json.data.weather[0].avgtempC;
+        return json.data.weather;
     }
     else
     {
@@ -46,4 +46,4 @@ const getCSVFile = async (url: string): Promise<string> => {
     }
 };
 
-export {getCSVFile, getAverageTemperatureOnDate, getLocationDateForPhoto};
+export {getCSVFile, getWeatherOnDate, getLocationDateForPhoto};

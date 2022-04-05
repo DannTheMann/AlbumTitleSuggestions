@@ -1,7 +1,8 @@
 import './App.css';
-import { getAverageTemperatureOnDate, getCSVFile, getLocationDateForPhoto } from './services';
+import { getCSVFile } from './services';
 import { Album, Photo, PhotoMetaData } from './models/Album';
-import { getEstimatedDistance, parseCSVDataIntoMetaData, parseMetaDataIntoPhotoArray } from './helpers/AlbumParser';
+import { parseCSVDataIntoMetaData, parseMetaDataIntoAlbum, parseMetaDataIntoPhotoArray } from './helpers/AlbumParser';
+import { useState } from 'react';
 
 const datasetUrls: string[] = 
 [
@@ -10,32 +11,52 @@ const datasetUrls: string[] =
   'https://gist.githubusercontent.com/tomjcohen/726d24f1fe2736a16028911c3b544bfc/raw/4e85629b513c6fb15202b4d1410fc03e568a0dcb/3.csv',
 ]
 
-const albums: Album[] = [];
-
-const showData = async () => {
+const getAlbumTitles = async () => {
 
   // Iterate over 3 album URLs, and fetch their relevant CSV data
-  datasetUrls.forEach( async (url)=>{
+  return Promise.all(datasetUrls.map( async (url)=>{
     const data = await getCSVFile(url);
     const rows = data.split('\n');
 
-    // The album to form
-    const album: Album = {photos: [], suggestedTitles: []};
-
-
+    // Generate some data
     const metaData: PhotoMetaData[] = parseCSVDataIntoMetaData(rows);
     const photoData: Photo[] = await parseMetaDataIntoPhotoArray(metaData);
 
-    console.warn(photoData);
+    // Create an album object from the photos
+    return parseMetaDataIntoAlbum(photoData);
 
-  });
+  }));
 }
 
 function App() {
+
+  const [albumTitles, setAlbumTitles] = useState<Album[]>([]);
+
+  const handleClick = async () => {
+    const albums = await getAlbumTitles();
+    setAlbumTitles(albums);
+  }
+
   return (
-    <div>
+    <div style={{textAlign: 'center'}}>
+
       <h1>Suggestions for Album Titles</h1>
-      <button onClick={showData}>Test</button>
+      <button onClick={handleClick}>Generate Titles</button>
+      <hr></hr>
+
+      <div>
+        {albumTitles.map((album, i) => (
+          <>
+            <div key={i}>
+              <h3>{album.country} - {album.weather} - {album.averageTemperature}°C</h3>
+            {album.suggestedTitles.map((title, j) => (
+                <div key={j}>{title}</div>
+            ) )}
+            </div>
+            <hr></hr>
+          </>
+        ) )}
+      </div>
     </div>
   );
 }
