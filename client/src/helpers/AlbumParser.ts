@@ -95,12 +95,20 @@ const parseMetaDataIntoPhotoArray = async (metaData: PhotoMetaData[]): Promise<P
             try
             {
                 const fetchGeoLocationData = await getLocationDateForPhoto(data.coordinates);
-                // This is an API call to a very restrictive end point that gets upset if we spam it often.
+
+                //
+                // NOTE ---
+                //
+                // Normally we'd use something like the getWeatherOnDate function here. This does work and
+                // will retrieve the relevant JSON object with temperature, weather etc. Unfortunately the
+                // API calls are limited to 500 a day. So while it can be enabled, it would cause issues down  
+                //
                 // Normally the format for retreiving the data from the JSON is:
                 // newPhoto.weather = temperatureData[0].hourly[3].weatherDesc[0].value;
                 // newPhoto.temperature = temperatureData[0].avgtempC;
-
                 //const temperatureData = await getWeatherOnDate(newPhotoTime.toISOString(), data.coordinates);
+                //
+                
                 const address = fetchGeoLocationData.items[0].address;
                 newPhoto.country = address.countryName;
                 newPhoto.city = address.city;
