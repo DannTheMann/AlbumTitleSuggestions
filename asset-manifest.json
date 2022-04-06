@@ -1,15 +1,15 @@
 {
-  "main.css": "/AlbumTitleSuggestions/static/css/main.10501430.chunk.css",
-  "main.js": "/AlbumTitleSuggestions/static/js/main.bf33ea16.chunk.js",
-  "main.js.map": "/AlbumTitleSuggestions/static/js/main.bf33ea16.chunk.js.map",
-  "runtime~main.js": "/AlbumTitleSuggestions/static/js/runtime~main.db6ea4af.js",
-  "runtime~main.js.map": "/AlbumTitleSuggestions/static/js/runtime~main.db6ea4af.js.map",
-  "static/js/2.a962c0fb.chunk.js": "/AlbumTitleSuggestions/static/js/2.a962c0fb.chunk.js",
-  "static/js/2.a962c0fb.chunk.js.map": "/AlbumTitleSuggestions/static/js/2.a962c0fb.chunk.js.map",
-  "static/js/3.5526bd81.chunk.js": "/AlbumTitleSuggestions/static/js/3.5526bd81.chunk.js",
-  "static/js/3.5526bd81.chunk.js.map": "/AlbumTitleSuggestions/static/js/3.5526bd81.chunk.js.map",
-  "index.html": "/AlbumTitleSuggestions/index.html",
-  "precache-manifest.ef5633b257c088533e7f78302377d3bb.js": "/AlbumTitleSuggestions/precache-manifest.ef5633b257c088533e7f78302377d3bb.js",
-  "service-worker.js": "/AlbumTitleSuggestions/service-worker.js",
-  "static/css/main.10501430.chunk.css.map": "/AlbumTitleSuggestions/static/css/main.10501430.chunk.css.map"
+  "files": {
+    "main.css": "/AlbumTitleSuggestions/static/css/main.073c9b0a.css",
+    "main.js": "/AlbumTitleSuggestions/static/js/main.0c794586.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/AlbumTitleSuggestions/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/AlbumTitleSuggestions/index.html",
+    "main.073c9b0a.css.map": "/AlbumTitleSuggestions/static/css/main.073c9b0a.css.map",
+    "main.0c794586.js.map": "/AlbumTitleSuggestions/static/js/main.0c794586.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/AlbumTitleSuggestions/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.0c794586.js"
+  ]
 }
