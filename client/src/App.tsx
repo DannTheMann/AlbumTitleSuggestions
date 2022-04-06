@@ -42,6 +42,7 @@ function App() {
   return (
     <div style={{textAlign: 'center'}}>
       <h1>Suggestions for Album Titles</h1>
+      <p>Front-end built with React, hosted on Github Pages and utilising TypeScript to generate content.</p>
       <button onClick={handleClick}>Generate Titles</button>
       <hr></hr>
 
