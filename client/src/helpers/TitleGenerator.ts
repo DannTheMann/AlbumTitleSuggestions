@@ -9,11 +9,22 @@ const TITLE_PREFIXS = [
 
 const TITLES_TO_GENERATE: number = 10;
 
+/**
+ * Imitates a coin flip, generating a true
+ * false boolean at 50% chance.
+ * @returns {boolean} 
+ */
 const coinFlip = (): boolean => 
 {
     return Math.floor(Math.random() * 2) == 1;
 }
 
+/**
+ * Generates sensible titles based on the albums metadata
+ * forged from the photographs in the album. 
+ * @param {Album} album The album to form titles for
+ * @returns {string[]} A string array representing titles
+ */
 const generateTitles = (album: Album): string[] =>
 {
     let titles: string[] = [];
@@ -22,19 +33,23 @@ const generateTitles = (album: Album): string[] =>
     let temp = Math.random() * 50;
     if(coinFlip()) temp *= -1; // Make negative
 
+    // Generate X amount of titles...
     for(let i = 0; i <= TITLES_TO_GENERATE; i++)
     {
         let title = "";
 
+        // We can start a title with 'Adventure in' or something similar.
         if(coinFlip()) title += TITLE_PREFIXS[Math.floor(Math.random() * TITLE_PREFIXS.length)];
+        // Otherwise we might start with 'Weekend'
         else if(coinFlip() && album.photos[0].weekend) 
         {
+            // We can also look to append the weather
             if(coinFlip()) title += album.weather;
             title +=  coinFlip() ? " weekend in " : " weekend away in ";
         }
         else title += album.weather + " day in ";
         
-        
+        // Really primitive implementation of providing some form of 'temperature'
         if(coinFlip()) 
         {
             // Normally we'd pull this from here, but as we're in a bit of a pickle with an awkward API
@@ -62,6 +77,7 @@ const generateTitles = (album: Album): string[] =>
             }
         }
 
+        // Whether we want to include the country, state etc.
         if(coinFlip()) title += album.country;
         else title += album.photos[0].state;
         

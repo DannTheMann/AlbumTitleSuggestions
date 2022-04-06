@@ -36,6 +36,13 @@ const getEstimatedDistance = (pointA: Coordinates, pointB: Coordinates): number 
     return RADIUS * angularDistance;
 }
 
+/**
+ * Takes a raw text string array of CSV data and parses it into an 
+ * array of PhotoMetaData containing the timestamp, and coordinates
+ * (lat, long) of said photo meta data.
+ * @param {string[]} data The CSV data to parse
+ * @returns {PhotoMetaData[]} The set of metadata from the csv file
+ */
 const parseCSVDataIntoMetaData = (data: string[]): PhotoMetaData[] => {
     return data.map((row) => {
         const [timestamp, latitude, longitude] = row.split(',');
@@ -43,8 +50,15 @@ const parseCSVDataIntoMetaData = (data: string[]): PhotoMetaData[] => {
     });
 }
 
+/**
+ * Parses an array of photo meta data and returns an array of photos.
+ * The photos contain further details such as weather, temperature etc.
+ * @param {PhotoMetaData[]} metaData The data that can be used to correlate further data
+ * @returns {Promise<Photo[]>} Returns the array of photos
+ */
 const parseMetaDataIntoPhotoArray = async (metaData: PhotoMetaData[]): Promise<Photo[]> => {
     
+    // Used as a reference to determine whether fetch calls are required
     let lastPhoto: Photo = undefined!;
 
     let photos: Photo[] = [];
@@ -56,6 +70,7 @@ const parseMetaDataIntoPhotoArray = async (metaData: PhotoMetaData[]): Promise<P
   
         const newPhotoTime = new Date(data.timestamp);
   
+        // We'll use these to identify whether further fetch calls are required
         let majorDistanceBetweenLastPhoto: boolean = true;
         let majorTimeDifference: boolean = true;
   
@@ -107,6 +122,13 @@ const parseMetaDataIntoPhotoArray = async (metaData: PhotoMetaData[]): Promise<P
     return photos;
 };
 
+/**
+ * Forms an album object from photos and tries to formulate
+ * sensible titles for the album based on the correlated
+ * metadata harvested.
+ * @param {Photo[]} photos The photos form an album out of
+ * @returns {Album} The album created
+ */
 const parseMetaDataIntoAlbum = (photos: Photo[]): Album => {
     let album: Album = 
     {

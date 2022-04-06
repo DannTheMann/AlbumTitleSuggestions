@@ -4,6 +4,7 @@ import { Album, Photo, PhotoMetaData } from './models/Album';
 import { parseCSVDataIntoMetaData, parseMetaDataIntoAlbum, parseMetaDataIntoPhotoArray } from './helpers/AlbumParser';
 import { useState } from 'react';
 
+// Datasets provided for challenge.
 const datasetUrls: string[] = 
 [
   'https://gist.githubusercontent.com/tomjcohen/726d24f1fe2736a16028911c3b544bfc/raw/4e85629b513c6fb15202b4d1410fc03e568a0dcb/1.csv',
@@ -32,6 +33,7 @@ function App() {
 
   const [albumTitles, setAlbumTitles] = useState<Album[]>([]);
 
+  // Process click when the user generates titles.
   const handleClick = async () => {
     const albums = await getAlbumTitles();
     setAlbumTitles(albums);
@@ -39,7 +41,6 @@ function App() {
 
   return (
     <div style={{textAlign: 'center'}}>
-
       <h1>Suggestions for Album Titles</h1>
       <button onClick={handleClick}>Generate Titles</button>
       <hr></hr>
