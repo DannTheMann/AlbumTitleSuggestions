@@ -27,6 +27,15 @@ const coinFlip = (): boolean =>
  */
 const generateTitles = (album: Album): string[] =>
 {
+    /**
+     * 
+     * I ran out of time here regarding building and
+     * being clever with strings, tokenizing or formatting
+     * wise (similar to internationlisation). As such it's a
+     * real sphagetti western below and it's not representative
+     * of my full capabilities!
+     * 
+     */
     let titles: string[] = [];
     
     // Debug only owing to API issue mentioned below

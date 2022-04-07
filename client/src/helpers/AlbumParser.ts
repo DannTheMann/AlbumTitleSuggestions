@@ -33,7 +33,7 @@ const getEstimatedDistance = (pointA: Coordinates, pointB: Coordinates): number 
 
     const angularDistance = 2 * Math.atan2(Math.sqrt(halfChordLength), Math.sqrt(1 - halfChordLength));
 
-    return RADIUS * angularDistance;
+    return Math.round(RADIUS * angularDistance);
 }
 
 /**
@@ -44,10 +44,15 @@ const getEstimatedDistance = (pointA: Coordinates, pointB: Coordinates): number 
  * @returns {PhotoMetaData[]} The set of metadata from the csv file
  */
 const parseCSVDataIntoMetaData = (data: string[]): PhotoMetaData[] => {
-    return data.map((row) => {
-        const [timestamp, latitude, longitude] = row.split(',');
-        return {timestamp, coordinates: {latitude: +latitude, longitude: +longitude}} as PhotoMetaData;
-    });
+    try{
+        return data.map((row) => {
+            const [timestamp, latitude, longitude] = row.split(',');
+            return {timestamp, coordinates: {latitude: +latitude, longitude: +longitude}} as PhotoMetaData;
+        });
+    }catch(err){
+        console.warn("Failed to parse CSV data, error="+err);
+        return [];
+    }
 }
 
 /**
@@ -138,6 +143,10 @@ const parseMetaDataIntoPhotoArray = async (metaData: PhotoMetaData[]): Promise<P
  * @returns {Album} The album created
  */
 const parseMetaDataIntoAlbum = (photos: Photo[]): Album => {
+    if(!photos || photos.length <= 0)
+    {
+        throw Error("Failed to parse Album, photos didn't exist or length was 0.");
+    }
     let album: Album = 
     {
         photos: photos,
